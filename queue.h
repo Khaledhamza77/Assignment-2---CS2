@@ -15,7 +15,7 @@ public:
     ~Queue();
     void push(Q item);
     Q pop();
-    int length();
+    int size();
     bool isEmpty();
     bool isFull();
 };
