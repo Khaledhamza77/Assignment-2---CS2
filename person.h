@@ -18,11 +18,10 @@ public:
     void set_Name(string nm);
     void set_ID(int id);
     void set_Age(int age);
-    void set_App(int hrs, int ms);
-    string get_Name();
-    int get_ID();
-    int get_Age();
-    int get_AppHrs();
-    int get_AppMins();
-    void printinfo();
+    string get_Name() const;
+    int get_ID() const;
+    int get_Age() const;
+    virtual void set_Appt(int hrs, int ms) = 0;
+    virtual Appointment get_Appt() = 0;
+    virtual void printinfo() = 0;
 };
