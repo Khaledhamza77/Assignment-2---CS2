@@ -1,3 +1,5 @@
+#ifndef _XXX_
+#define _XXX_
 #include<iostream>
 #include<string>
 using namespace std;
@@ -14,14 +16,15 @@ private:
     int Age;
     Appointment appointTime;
 public:
-    Person(string nm="",int id=0,int age=0);
-    void set_Name(string nm);
-    void set_ID(int id);
-    void set_Age(int age);
-    string get_Name() const;
-    int get_ID() const;
-    int get_Age() const;
+    Person(){Name="";ID=0;Age=0;}
+    void set_Name(string nm){Name=nm;}
+    void set_ID(int id){ID=id;}
+    void set_Age(int age){Age=age;}
+    string get_Name() const {return Name;}
+    int get_ID() const {return ID;}
+    int get_Age() const {return Age;}
     virtual void set_Appt(int hrs, int ms) = 0;
-    virtual Appointment get_Appt() = 0;
+    virtual Appointment get_Appt() const = 0;
     virtual void printinfo() = 0;
 };
+#endif
