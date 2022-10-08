@@ -12,7 +12,7 @@ private:
     int rear;
     int count;
 public:
-    Queue(){lenghth=size;array=new Q[length];front=0;rear=-1;count=0;}
+    Queue(){length=size;array=new Q[length];front=0;rear=-1;count=0;}
     Queue(int lgth){
     array=new Q [lgth];length=lgth;front=0;rear=-1;count=0;}
     ~Queue(){delete[] array;}

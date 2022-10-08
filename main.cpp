@@ -9,27 +9,30 @@ using namespace std;
 
 int main(){
     Queue<Customer> qu(11);
-    Queue<Mechanic> qu2(4);
+    Queue<Mechanic> qu2(3);//There are 3 mechanics
 
     ifstream myfile;
     myfile.open("mechanics.txt");
     string mytext[18];//18 is the number of lines in mechanics.txt
-    int pos=0;
+    for(int i=0;i<18;i++){
+        getline(myfile,mytext[i]);
+    }
+    int line=0;
 
 for(int i=0;i<qu2.size();i++){
     Mechanic mech;
-    for(int j=pos;i<18;j++){
-        getline(myfile,mytext[j]);
+    mech.set_Name(mytext[line]);line++;
+    mech.set_Age(stoi(mytext[line]));line++;
+    mech.set_ID(stoi(mytext[line]));line++;
+    mech.set_counter(stoi(mytext[line]));line++;
+    int apptIndex=0;
+    for(int x=line;x<(mech.get_counter()*2)+(line-1);x++){
+        Appointment appt; appt.hours=stoi(mytext[x]); x++; appt.mins=stoi(mytext[x]);
+        mech.set_Appointment(appt, apptIndex);apptIndex++;
+        }
+    line=(mech.get_counter()*2)+line;
+    qu2.push(mech);
     }
-    mech.set_Name(mytext[pos]);pos++;
-    mech.set_ID(stoi(mytext[pos]));pos++;
-    mech.set_counter(stoi(mytext[pos]));pos++;
-    }
-
-    Customer Nour(123,3,15);
-    Nour.set_Name("Nour");
-    Nour.set_Age(23);
-    Nour.set_ID(900202943);
-    Nour.printinfo();
+    qu2.pop().printinfo();
     return 0;
 }
