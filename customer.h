@@ -9,8 +9,7 @@ private:
     int MechanicID;
     Appointment appt;
 public:
-    Customer(){MechanicID=0;appt.hours=0;appt.mins=0;}
-    Customer(int MechId, int hr, int min){
+    Customer(int MechId=0, int hr=0, int min=0){
         MechanicID=MechId;
         set_Appt(hr,min);
     }
