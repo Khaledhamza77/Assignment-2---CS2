@@ -24,7 +24,7 @@ for(int i=0;i<qu2.size();i++){
     mech.set_Name(mytext[pos]);pos++;
     mech.set_ID(stoi(mytext[pos]));pos++;
     mech.set_counter(stoi(mytext[pos]));pos++;
-}
+    }
 
     Customer Nour(123,3,15);
     Nour.set_Name("Nour");
