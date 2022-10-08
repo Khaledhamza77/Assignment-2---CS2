@@ -1,7 +1,11 @@
 #include<iostream>
 #include<string>
-#include"appointment.h"
 using namespace std;
+
+struct Appointment{
+    int hours;
+    int mins;
+};
 
 class Person{
 private:
