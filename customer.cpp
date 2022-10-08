@@ -35,7 +35,7 @@ void Customer::set_Appt(int hrs, int ms){
     else
         appt.mins=ms;
 }
-Appointment Customer::get_Appt() const {return appt;}
+Appointment Customer::get_Appt(){return appt;}
 void Customer::printinfo(){
     cout<<"Client's information:\n";
     cout<<"Name: "<<get_Name()<<"\n";
