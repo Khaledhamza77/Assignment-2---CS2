@@ -35,7 +35,7 @@ public:
     bool isAvailable(Appointment appt){
         for(int i=0;i<counter;i++){
             if(get_Appt(i).hours==appt.hours && get_Appt(i).mins==appt.mins) {return false;break;}
-        else return true;
+            else return true;
         }
     }
 };
