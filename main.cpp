@@ -1,6 +1,7 @@
 #include<fstream>
 #include<iostream>
 #include<string>
+#include<vector>
 #include"person.h"
 #include"customer.h"
 #include"mechanic.h"
@@ -40,16 +41,27 @@ void customer_info(Customer& cust, int& line){
     myfile.close();
 }
 
-void bubbleSort(Queue<Customer> q, int n){
+Queue<Customer> sort(Queue<Customer>& q){
+    vector<Customer> vect;
+    vect.resize(4);
+    int n = 4;
+    for(int i=0;i<n;i++){
+       vect.at(i)=q.pop();
+    }
     for(int i=0;i<n-1;i++){
         for(int j=0;j<n-i-1;j++){
-            if(q.peek(j)>q.peek(j+1)){
-                Customer temp = q.peek(j);
-                q.peek(j)=q.peek(j+1);
-                q.peek(j+1)=temp;
+            if(vect[j]>vect[j+1]){
+                Customer temp = vect[j];
+                vect[j]=vect[j+1];
+                vect[j+1]=temp;
             }
         }
     }
+    Queue<Customer> q2(n);
+    for(int i=0;i<n;i++){
+       q2.push(vect.at(i));
+    }
+    return q2;
 }
 
 int main(){
@@ -87,14 +99,22 @@ int main(){
     qu2.push(mech2);
     qu2.push(mech3);
 
-    int j=0;
+    /*int j=0;
     
     for(int i=0;i<qu.size();i++){
         if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())) qu.peek(i).set_MechID(qu2.peek(j).get_ID());
         else if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())) qu.peek(i).set_MechID(qu2.peek(j+1).get_ID());
         else if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())) qu.peek(i).set_MechID(qu2.peek(j).get_ID());
         j++;
-    }
+    }*/
+
+    
+
+    qu=sort(qu);
+    cout<<qu.pop().get_Name();
+    cout<<qu.pop().get_Name();
+    cout<<qu.pop().get_Name();
+    cout<<qu.pop().get_Name();
 
     return 0;
 }
