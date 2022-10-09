@@ -34,7 +34,7 @@ public:
     bool operator == (const Appointment& x){
         return (this->appt.hours==x.hours && this->appt.mins==x.mins);
     }
-    virtual void set_Appt(int hrs, int ms){
+    void set_Appt(int hrs, int ms){
         if(hrs<0||hrs>24)
             cout<<"Please enter a number between 0 and 24 inclusive!\n";
         else
@@ -44,8 +44,8 @@ public:
         else
             appt.mins=ms;
     }
-    virtual Appointment get_Appt() const {return appt;}
-    virtual void printinfo(){
+    Appointment get_Appt() const {return appt;}
+    void printinfo(){
         cout<<"Client's information:\n";
         cout<<"Name: "<<get_Name()<<"\n";
         cout<<"ID: "<<get_ID()<<"\n";

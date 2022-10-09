@@ -4,17 +4,11 @@
 #include<string>
 using namespace std;
 
-struct Appointment{
-    int hours;
-    int mins;
-};
-
 class Person{
 private:
     string Name;
     int ID;
     int Age;
-    Appointment appointTime;
 public:
     Person(){Name="";ID=0;Age=0;}
     void set_Name(string nm){Name=nm;}
@@ -23,8 +17,7 @@ public:
     string get_Name() const {return Name;}
     int get_ID() const {return ID;}
     int get_Age() const {return Age;}
-    virtual void set_Appt(int hrs, int ms) = 0;
-    virtual Appointment get_Appt() const = 0;
+    struct Appointment{int hours;int mins;};
     virtual void printinfo() = 0;
 };
 #endif
