@@ -64,6 +64,17 @@ Queue<Customer> sort(Queue<Customer>& q){
     return q2;
 }
 
+void AssignToMechanic(Customer& cust,Queue<Mechanic>& q,int custNum){
+    for(int j=custNum;cust.get_MechID()==0;j++){
+        cout<<"here2\n";
+        if(q.peek(j).isAvailable(cust.get_Appt())){
+            cout<<"ID in loop: "<<q.peek(j).get_ID()<<"\n";
+            cust.set_MechID(q.peek(j).get_ID());
+            break;
+        }
+    }
+}
+
 int main(){
     Queue<Customer> qu(4);//There are 4 customers
     Queue<Mechanic> qu2(3);//There are 3 mechanics
@@ -90,22 +101,19 @@ int main(){
     customer_info(cust3,line);
     customer_info(cust4,line);
 
-    qu.push(cust1);
-    qu.push(cust2);
-    qu.push(cust3);
-    qu.push(cust4);
-
     qu2.push(mech1);
     qu2.push(mech2);
     qu2.push(mech3);
 
-    for(int i=0;i<qu.size();i++){
-    bool Assigned = (qu.peek(i).get_MechID() != 21 && qu.peek(i).get_MechID() != 22 && qu.peek(i).get_MechID() != 23);
-        for(int j=i;!Assigned;j=(j+1)%qu2.size()){
-                if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())){
-                    qu.peek(i).set_MechID(qu2.peek(j).get_ID());break;}
-        }
-    }
+    AssignToMechanic(cust1,qu2,0);
+    AssignToMechanic(cust2,qu2,1);
+    AssignToMechanic(cust3,qu2,2);
+    AssignToMechanic(cust4,qu2,3);
+
+    qu.push(cust1);
+    qu.push(cust2);
+    qu.push(cust3);
+    qu.push(cust4);
 
     qu=sort(qu);
     qu.pop().printinfo();

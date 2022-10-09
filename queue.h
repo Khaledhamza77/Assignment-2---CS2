@@ -21,7 +21,7 @@ public:
     else{rear++;array[rear]=item;count++;}}
     Q peek(int index){
         if(isEmpty())cout<<"Queue is empty!\n";
-        else return array[index];
+        else {Q x=array[index]; return x;}
     }
     Q pop(){
         if(isEmpty())cout<<"Queue is empty!\n";
