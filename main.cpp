@@ -87,7 +87,14 @@ int main(){
     qu2.push(mech2);
     qu2.push(mech3);
 
+    int j=0;
     
+    for(int i=0;i<qu.size();i++){
+        if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())) qu.peek(i).set_MechID(qu2.peek(j).get_ID());
+        else if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())) qu.peek(i).set_MechID(qu2.peek(j+1).get_ID());
+        else if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())) qu.peek(i).set_MechID(qu2.peek(j).get_ID());
+        j++;
+    }
 
     return 0;
 }

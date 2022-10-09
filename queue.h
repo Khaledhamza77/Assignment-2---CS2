@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
 const int size = 100;
@@ -6,26 +7,28 @@ const int size = 100;
 template <class Q>
 class Queue{
 private:
-    Q* array;
+    vector<Q> array;
     int length;
     int front;
     int rear;
     int count;
 public:
-    Queue(){length=size;array = new Q[size];front=0;rear=-1;count=0;}
+    Queue(){length=size;array.resize(length);front=0;rear=-1;count=0;}
     Queue(int lgth){
-    array=new Q[lgth];length=lgth;front=0;rear=-1;count=0;}
-    ~Queue(){delete [] array;}
-    void push(Q item){
+    array.resize(lgth);length=lgth;front=0;rear=-1;count=0;}
+    void push(Q & item){
     if(isFull()) cout<<"Queue full\n";
-    else{rear++;*(array+rear)=item;count++;}}
+    else{rear++;array[rear]=item;count++;}}
     Q peek(int index){
         if(isEmpty())cout<<"Queue is empty!\n";
-        else return *(array+index);
+        else return array[index];
     }
     Q pop(){
-    if(isEmpty())cout<<"Queue is empty!\n";
-    else{return *(array+front);front++;count--;}}
+        if(isEmpty())cout<<"Queue is empty!\n";
+        else{
+            Q x=array[front];front++;count--;
+            return x;}
+    }
     int size(){return count;}
     bool isEmpty(){return (count == 0);}
     bool isFull(){return (count == length);}

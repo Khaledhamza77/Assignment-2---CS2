@@ -15,24 +15,24 @@ public:
     }
     void set_MechID(int MechID){MechanicID=MechID;}
     int get_MechID() const{return MechanicID;}
-    bool operator <(const Appointment& x){
-        if(this->appt.hours<x.hours) return true;
-        else if(this->appt.hours==x.hours){
-            if(this->appt.mins<x.mins) return true;
+    bool operator <(const Customer& x){
+        if(this->appt.hours<x.appt.hours) return true;
+        else if(this->appt.hours==x.appt.hours){
+            if(this->appt.mins<x.appt.mins) return true;
             else return false;
         }
         else return false;
     }
-    bool operator >(const Appointment& x){
-        if(this->appt.hours>x.hours) return true;
-        else if(this->appt.hours==x.hours){
-            if(this->appt.mins>x.mins) return true;
+    bool operator >(const Customer& x){
+        if(this->appt.hours>x.appt.hours) return true;
+        else if(this->appt.hours==x.appt.hours){
+            if(this->appt.mins>x.appt.mins) return true;
             else return false;
         }
         else return false;
     }
-    bool operator == (const Appointment& x){
-        return (this->appt.hours==x.hours && this->appt.mins==x.mins);
+    bool operator == (const Customer& x){
+        return (this->appt.hours==x.appt.hours && this->appt.mins==x.appt.mins);
     }
     void set_Appt(int hrs, int ms){
         if(hrs<0||hrs>24)
