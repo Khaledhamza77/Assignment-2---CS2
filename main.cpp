@@ -64,14 +64,15 @@ Queue<Customer> sort(Queue<Customer>& q){
     return q2;
 }
 
-void AssignToMechanic(Customer& cust,Queue<Mechanic>& q,int custNum){
-    for(int j=custNum;cust.get_MechID()==0;j++){
+void AssignToMechanic(Customer& cust,Queue<Mechanic> q,int custNum){
+    int j=0;
+    while(cust.get_MechID()==0){
         cout<<"here2\n";
         if(q.peek(j).isAvailable(cust.get_Appt())){
             cout<<"ID in loop: "<<q.peek(j).get_ID()<<"\n";
-            cust.set_MechID(q.peek(j).get_ID());
-            break;
+            cust.set_MechID(q.peek(j).get_ID());q.pop();
         }
+        j++;
     }
 }
 
