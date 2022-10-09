@@ -27,7 +27,8 @@ public:
         if(isEmpty())cout<<"Queue is empty!\n";
         else{
             Q x=array[front];front++;count--;
-            return x;}
+            return x;
+            }
     }
     int size(){return count;}
     bool isEmpty(){return (count == 0);}
