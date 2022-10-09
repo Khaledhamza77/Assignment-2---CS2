@@ -99,22 +99,19 @@ int main(){
     qu2.push(mech2);
     qu2.push(mech3);
 
-    /*int j=0;
-    
     for(int i=0;i<qu.size();i++){
-        if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())) qu.peek(i).set_MechID(qu2.peek(j).get_ID());
-        else if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())) qu.peek(i).set_MechID(qu2.peek(j+1).get_ID());
-        else if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())) qu.peek(i).set_MechID(qu2.peek(j).get_ID());
-        j++;
-    }*/
-
-    
+    bool Assigned = (qu.peek(i).get_MechID() != 21 && qu.peek(i).get_MechID() != 22 && qu.peek(i).get_MechID() != 23);
+        for(int j=i;!Assigned;j=(j+1)%qu2.size()){
+                if(qu2.peek(j).isAvailable(qu.peek(i).get_Appt())){
+                    qu.peek(i).set_MechID(qu2.peek(j).get_ID());break;}
+        }
+    }
 
     qu=sort(qu);
-    cout<<qu.pop().get_Name();
-    cout<<qu.pop().get_Name();
-    cout<<qu.pop().get_Name();
-    cout<<qu.pop().get_Name();
+    qu.pop().printinfo();
+    qu.pop().printinfo();
+    qu.pop().printinfo();
+    qu.pop().printinfo();
 
     return 0;
 }
