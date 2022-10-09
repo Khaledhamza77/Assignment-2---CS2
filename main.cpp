@@ -64,21 +64,9 @@ Queue<Customer> sort(Queue<Customer>& q){
     return q2;
 }
 
-void AssignToMechanic(Customer& cust,Queue<Mechanic> q,int custNum){
-    int j=0;
-    while(cust.get_MechID()==0){
-        cout<<"here2\n";
-        if(q.peek(j).isAvailable(cust.get_Appt())){
-            cout<<"ID in loop: "<<q.peek(j).get_ID()<<"\n";
-            cust.set_MechID(q.peek(j).get_ID());q.pop();
-        }
-        j++;
-    }
-}
-
 int main(){
     Queue<Customer> qu(4);//There are 4 customers
-    Queue<Mechanic> qu2(3);//There are 3 mechanics
+    Queue<Mechanic> qu2(4);//There are 3 mechanics
 
     Mechanic mech1;
     Mechanic mech2;
@@ -105,11 +93,12 @@ int main(){
     qu2.push(mech1);
     qu2.push(mech2);
     qu2.push(mech3);
+    qu2.push(mech1);
 
-    AssignToMechanic(cust1,qu2,0);
-    AssignToMechanic(cust2,qu2,1);
-    AssignToMechanic(cust3,qu2,2);
-    AssignToMechanic(cust4,qu2,3);
+    if(qu2.peek(0).isAvailable(cust1.get_Appt())) cust1.set_MechID(mech1.get_ID());
+    if(qu2.peek(0).isAvailable(cust2.get_Appt())) cust2.set_MechID(mech2.get_ID());
+    if(qu2.peek(2).isAvailable(cust3.get_Appt())) cust3.set_MechID(mech3.get_ID());
+    if(qu2.peek(3).isAvailable(cust4.get_Appt())) cust4.set_MechID(mech1.get_ID());
 
     qu.push(cust1);
     qu.push(cust2);
@@ -117,6 +106,7 @@ int main(){
     qu.push(cust4);
 
     qu=sort(qu);
+
     qu.pop().printinfo();
     qu.pop().printinfo();
     qu.pop().printinfo();
